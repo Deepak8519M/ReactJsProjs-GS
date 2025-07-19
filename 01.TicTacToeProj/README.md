@@ -72,7 +72,7 @@ npm run dev
 
 ## 📸 Screenshot
 
-![Tic Tac Toe Game Screenshot](/TicTacToeRjs.png)
+![Tic Tac Toe Game Screenshot](./public/TicTacToeRjs.png)
 
 ## ✅ How Win Detection Works
 
