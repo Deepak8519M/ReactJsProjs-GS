@@ -42,7 +42,7 @@ src/
 ## ⚙️ Technologies Used
 
 - ⚛️ React (Hooks + Functional Components)
-- 🎨 Tailwind CSS (optional but makes UI nice)
+- 🎨 CSS 
 - 🧠 Vanilla JS logic for game rules
 
 ---
@@ -100,4 +100,4 @@ Made with ❤️ in React
 
 ```
 
-```
+
