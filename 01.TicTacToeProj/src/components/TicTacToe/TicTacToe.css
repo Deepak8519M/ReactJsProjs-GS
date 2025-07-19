@@ -6,6 +6,7 @@
   color: white;
   font-size: 40px;
   display: flex;
+
   justify-content: center;
   align-items: center;
   /* background: red; */
@@ -50,4 +51,10 @@
 .boxes img {
   margin: 10px 10px;
   background: transparent;
+}
+.title img {
+  /* background: red; */
+  margin-left: 10px;
+  height: 40px;
+  margin-right: 12px;
 }
