@@ -6,8 +6,12 @@ import cross_icon from "../Assets/cross.png";
 
 function TicTacToe() {
   return (
-    <div>
-      <h1>hello</h1>
+    <div className="container">
+      <h1 className="title">
+        Tic Tac Toe Game in <span>React</span>
+      </h1>
+      <div className="board"></div>
+      <button className="reset">Reset</button>
     </div>
   );
 }
