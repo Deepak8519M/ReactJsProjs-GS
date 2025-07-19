@@ -85,4 +85,71 @@ This is the **safest and cleanest** way:
 
 ---
 
-Let me know if you'd like a live sandbox example or want to explore how JSX parses whitespace behind the scenes!
+Great question!
+
+You asked:
+
+> **Why do we need to write `data[2] !== ""` (or similar conditions) when checking for a win?**
+
+Let’s explain in **simple steps**.
+
+---
+
+### ✅ The Line:
+
+```js
+if (data[0] === data[1] && data[1] === data[2] && data[2] !== "")
+```
+
+This checks if:
+
+1. All 3 positions (`0`, `1`, and `2`) have the **same value**
+2. That value is **not an empty string**
+
+---
+
+### 🧠 Why `data[2] !== ""` is Needed:
+
+Without it, this would also count as a **win**:
+
+```js
+data = ["", "", ""]   // All equal, but **empty**
+```
+
+And this would wrongly trigger a win:
+
+```js
+data[0] === data[1] === data[2]  // true
+```
+
+But there's **no actual move made yet** — it's just 3 empty cells. That’s not a win.
+
+---
+
+### ✅ So we add `data[2] !== ""` to ensure:
+
+* The matching values are **either `"X"` or `"O"`**
+* Not just 3 empty cells
+
+---
+
+### 🔄 Example Comparison:
+
+| `data`            | Condition Match | `data[2] !== ""` | Is it a Win? |
+| ----------------- | --------------- | ---------------- | ------------ |
+| `["X", "X", "X"]` | ✅               | ✅                | ✅ YES        |
+| `["", "", ""]`    | ✅               | ❌                | ❌ NO         |
+| `["O", "O", "O"]` | ✅               | ✅                | ✅ YES        |
+| `["X", "X", ""]`  | ❌               | ❌                | ❌ NO         |
+
+---
+
+### ✅ Final Thoughts:
+
+We use `data[2] !== ""` to **prevent false wins** when the board is still empty or partially filled.
+
+It's a **simple but critical check** for proper Tic Tac Toe logic.
+
+---
+
+
