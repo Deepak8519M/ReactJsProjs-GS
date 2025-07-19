@@ -1,8 +1,3 @@
-Here’s a simple yet **amazing** `README.md` for your **Tic Tac Toe Game in React** project:
-
----
-
-```markdown
 # 🎮 Tic Tac Toe Game in React
 
 A fun and simple **Tic Tac Toe** game built with **React**, featuring clean design and intuitive gameplay.
@@ -86,7 +81,4 @@ Enjoy the game! 😄
 
 ```
 
----
 
-Let me know if you want to include **GIF**, **Dark Mode toggle**, or **AI bot opponent** in future upgrades and we’ll update this README accordingly!
-```
