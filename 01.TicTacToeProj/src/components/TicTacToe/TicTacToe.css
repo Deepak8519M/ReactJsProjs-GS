@@ -27,6 +27,13 @@
   font-size: 26px;
   color: #26ffcb;
   margin-top: 20px;
+  transition: all ease-in 0.1s;
+}
+.reset:hover {
+  background: transparent;
+  border: 2px solid turquoise;
+  color: white;
+  transition: all ease-in 0.1s;
 }
 
 .boxes {

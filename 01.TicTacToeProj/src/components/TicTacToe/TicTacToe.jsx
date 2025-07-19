@@ -61,8 +61,11 @@ function TicTacToe() {
 
   const reset = () => {
     setLock(false);
-    let data = ["", "", "", "", "", "", "", "", ""];
+    data = ["", "", "", "", "", "", "", "", ""];
     titleRef.current.innerHTML = "Tic Tac Toe in <span>React</span>";
+    box_array.map((e) => {
+      e.current.innerHTML = "";
+    });
   };
 
   const won = (winner) => {
@@ -70,7 +73,7 @@ function TicTacToe() {
     if (winner === "x") {
       titleRef.current.innerHTML = `Congrautulations: <img src=${cross_icon}> Won`;
     } else {
-      titleRef.current.innerHTML = `Congrautulations: <img src=${circle_icon}> WonG`;
+      titleRef.current.innerHTML = `Congrautulations: <img src=${circle_icon}> Won`;
     }
   };
   return (
