@@ -70,6 +70,8 @@ npm run dev
 
 > App runs on `http://localhost:5173`
 
+---
+
 ## 📸 Screenshot
 
 ![Tic Tac Toe Game Screenshot](./public/TicTacToeRjs.png)
@@ -98,6 +100,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 Made with ❤️ in React
 
-```
 
 
