@@ -17,12 +17,12 @@ A sleek and fully functional **Tic Tac Toe** game made using **React**, built wi
 - Each click triggers a state update and alternates between "X" and "O".
 - We use a `data` array to track board values.
 - Win is detected by checking specific index combinations:
-  
+
 ```js
 if (data[0] === data[1] && data[1] === data[2] && data[2] !== "") {
   won(data);
 }
-````
+```
 
 > The condition `data[i] !== ""` ensures empty cells are not counted as winning.
 
@@ -41,9 +41,9 @@ src/
 
 ## ⚙️ Technologies Used
 
-* ⚛️ React (Hooks + Functional Components)
-* 🎨 Tailwind CSS (optional but makes UI nice)
-* 🧠 Vanilla JS logic for game rules
+- ⚛️ React (Hooks + Functional Components)
+- 🎨 Tailwind CSS (optional but makes UI nice)
+- 🧠 Vanilla JS logic for game rules
 
 ---
 
@@ -72,7 +72,7 @@ npm run dev
 
 ## 📸 Screenshot
 
-![Tic Tac Toe Game Screenshot](./TicTacToeRjs.png)
+![Tic Tac Toe Game Screenshot](/TicTacToeRjs.png)
 
 ## ✅ How Win Detection Works
 
@@ -100,3 +100,4 @@ Made with ❤️ in React
 
 ```
 
+```
