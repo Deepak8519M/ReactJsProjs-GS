@@ -4,9 +4,8 @@ import "./TicTacToe.css";
 import circle_icon from "../Assets/circle.png";
 import cross_icon from "../Assets/cross.png";
 
+let data = ["", "", "", "", "", "", "", "", ""];
 function TicTacToe() {
-  let data = ["", "", "", "", "", "", "", "", ""];
-
   let [count, setCount] = useState(0);
   let [lock, setLock] = useState(false);
 
@@ -23,6 +22,7 @@ function TicTacToe() {
       data[num] = "o";
       setCount(++count);
     }
+    checkWin();
   };
 
   const checkWin = () => {

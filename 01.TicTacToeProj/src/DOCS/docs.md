@@ -152,4 +152,108 @@ It's a **simple but critical check** for proper Tic Tac Toe logic.
 
 ---
 
+Great follow-up question! Let's explain this **clearly and deeply**:
+
+---
+
+## 🔥 Short Answer:
+
+> **Because when you keep `let data = [...]` *inside* the component, React resets it every time the component re-renders.**
+
+So the `data` array **does not persist** — and **loses all previous updates**, like moves or win-check conditions.
+
+---
+
+## 🧠 Why It Happens:
+
+In React functional components:
+
+```js
+function TicTacToe() {
+  let data = [...]; // ← This line runs every render
+}
+```
+
+This `let data = [...]` runs **fresh on every render** — meaning:
+
+* Every time `setCount()` is called,
+* React **re-runs** your component from top to bottom,
+* Which means it **re-creates a new array**, wiping out the old one.
+
+So any updates you made to `data[num] = "x"` are lost immediately when React re-renders the component.
+
+---
+
+## ✅ Solution: Make the array **persistent** by storing it using:
+
+### Option 1: `useRef`
+
+```js
+const dataRef = useRef(["", "", "", "", "", "", "", "", ""]);
+```
+
+* This **creates a persistent object** whose value stays the same across re-renders.
+* The value is stored in `dataRef.current`
+* Updating it does **not trigger re-render**, but it **preserves** the state.
+
+### Option 2: `useState`
+
+```js
+const [data, setData] = useState(["", "", "", "", "", "", "", "", ""]);
+```
+
+* This will **persist across re-renders**,
+* But every time you update, it **causes a re-render** (good if you want the UI to update with data).
+
+---
+
+## 🔄 Real Example:
+
+### ❌ Bad (what you're doing now):
+
+```js
+let data = ["", "", "", "", "", "", "", "", ""];
+```
+
+* On every re-render: data becomes `["", "", "", "", "", "", "", "", ""]` again
+* You lose the stored board
+* `checkWin()` sees empty array again → win logic fails
+* `lock` seems like it's not working because `data[num]` is empty again
+
+---
+
+### ✅ Good (with `useRef`):
+
+```js
+const dataRef = useRef(["", "", "", "", "", "", "", "", ""]);
+
+function toggle(e, num) {
+  if (lock) return;
+  if (dataRef.current[num] !== "") return;
+
+  if (count % 2 === 0) {
+    e.target.innerHTML = `<img src=${cross_icon} />`;
+    dataRef.current[num] = "x";
+  } else {
+    e.target.innerHTML = `<img src=${circle_icon} />`;
+    dataRef.current[num] = "o";
+  }
+
+  setCount((prev) => prev + 1);
+  checkWin();
+}
+```
+
+---
+
+## ✅ Summary:
+
+| Where `data` is declared    | What happens?                           |
+| --------------------------- | --------------------------------------- |
+| Inside component with `let` | ❌ Gets reset on every render            |
+| `useRef`                    | ✅ Persists across renders, no re-render |
+| `useState`                  | ✅ Persists + re-renders on update       |
+
+---
+
 
