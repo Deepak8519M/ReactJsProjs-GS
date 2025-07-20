@@ -45,8 +45,10 @@ Quiz/
 
    npm start
    
+````
 
 ## 🧠 Data Format (`data.js`)
+
 
 ```js
 export const data = [
