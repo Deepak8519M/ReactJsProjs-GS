@@ -1,8 +1,4 @@
-Here's a simple `README.md` file for your **Quiz App** project:
 
----
-
-```markdown
 # Quiz App 🧠
 
 A simple and interactive Quiz App built with **React JS**. It dynamically renders questions and allows users to select answers with immediate feedback.
