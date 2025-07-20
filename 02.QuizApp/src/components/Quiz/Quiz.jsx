@@ -6,6 +6,14 @@ function Quiz() {
   let [index, setIndex] = useState(2);
   let [question, setQuestion] = useState(data[index]);
 
+  const checkAns = (e, ans) => {
+    if (question.ans === ans) {
+      e.target.classList.add("correct");
+    } else {
+      e.target.classList.add("correct");
+    }
+  };
+
   return (
     <div className="container">
       <h1>Quiz App</h1>
