@@ -32,6 +32,7 @@ Quiz/
 ````bash
 
 1. Clone this repository:
+
    git clone https://github.com/your-username/quiz-app.git
    cd quiz-app
 
