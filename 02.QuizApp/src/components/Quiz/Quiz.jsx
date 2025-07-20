@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Quiz.css";
+import { data } from "../../Assets/data";
 
 function Quiz() {
+  let [index, setIndex] = useState(0);
+  let [question, setQuestion] = useState(data[index]);
+
   return (
     <div className="container">
       <h1>Quiz App</h1>

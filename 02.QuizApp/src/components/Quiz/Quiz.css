@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   height: 50px;
-
+  border-radius: 4px;
   padding-left: 15px;
   border: 1px solid #686868;
   margin-bottom: 10px;
