@@ -39,18 +39,20 @@
   font-size: 18px;
   cursor: pointer;
   border-radius: 5px;
-
+  outline: none;
   color: white;
+  box-shadow: none;
 }
+
 .index {
   margin: auto;
   font-size: 18px;
 }
-.correct {
+.container .correct {
   background: #dffff2;
   border-color: #00d397;
 }
-.wrong {
+.container .wrong {
   background: #ffebeb;
   border-color: #ff4a4a;
 }
