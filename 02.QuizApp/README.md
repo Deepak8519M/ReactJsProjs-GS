@@ -76,11 +76,9 @@ export const data = [
 
 ## 🙌 Author
 
-Made with ❤️ by \[Your Name]
+Made with ❤️ by \[Deepak Mallareddy]
 
 ---
-
-Feel free to customize this README based on your actual folder names, deployment info, or project extensions.
 
 ```
 
