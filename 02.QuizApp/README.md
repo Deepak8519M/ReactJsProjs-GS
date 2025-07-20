@@ -1,12 +1,89 @@
-# React + Vite
+Here's a simple `README.md` file for your **Quiz App** project:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+```markdown
+# Quiz App 🧠
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A simple and interactive Quiz App built with **React JS**. It dynamically renders questions and allows users to select answers with immediate feedback.
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Loads questions from a data file
+- Highlights correct and wrong answers instantly
+- Uses `useRef` to manipulate DOM styles
+- Keeps track of question index
+- Modular and beginner-friendly code structure
+
+## 📁 Project Structure
+
+```
+
+Quiz/
+├── src/
+│   ├── Assets/
+│   │   └── data.js      # Contains the array of question data
+│   ├── Components/
+│   │   └── Quiz.js      # Main Quiz component logic
+│   └── App.js
+├── public/
+└── README.md
+
+````
+
+## 📦 Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/quiz-app.git
+   cd quiz-app
+````
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm start
+   ```
+
+## 🧠 Data Format (`data.js`)
+
+```js
+export const data = [
+  {
+    question: "What is the capital of India?",
+    option1: "Mumbai",
+    option2: "Delhi",
+    option3: "Kolkata",
+    option4: "Chennai",
+    ans: 2, // index (1-based) of correct answer
+  },
+  ...
+];
+```
+
+## 🛠️ Technologies Used
+
+* React JS
+* CSS
+* JavaScript (ES6+)
+
+## 📸 Screenshots
+
+> *(Add screenshots here if available)*
+
+## 🙌 Author
+
+Made with ❤️ by \[Your Name]
+
+---
+
+Feel free to customize this README based on your actual folder names, deployment info, or project extensions.
+
+```
+
