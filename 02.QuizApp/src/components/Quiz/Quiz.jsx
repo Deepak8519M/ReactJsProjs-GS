@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Quiz.css";
 import { data } from "../../Assets/data";
 
@@ -6,11 +6,25 @@ function Quiz() {
   let [index, setIndex] = useState(2);
   let [question, setQuestion] = useState(data[index]);
 
+  let [lock, setLock] = useState(false);
+
+  let Option1 = useRef(null);
+  let Option2 = useRef(null);
+  let Option3 = useRef(null);
+  let Option4 = useRef(null);
+
+  let optionArray = [Option1, Option2, Option3, Option4];
+
   const checkAns = (e, ans) => {
-    if (question.ans === ans) {
-      e.target.classList.add("correct");
-    } else {
-      e.target.classList.add("wrong");
+    if (lock === false) {
+      if (question.ans === ans) {
+        e.target.classList.add("correct");
+        setLock(true);
+      } else {
+        e.target.classList.add("wrong");
+        setLock(true);
+        optionArray[question.ans - 1].current.classList.add("correct");
+      }
     }
   };
 
