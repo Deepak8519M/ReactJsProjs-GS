@@ -37,6 +37,7 @@ function Quiz() {
       </h2>
       <ul>
         <li
+          ref={Option1}
           onClick={(e) => {
             checkAns(e, 1);
           }}
@@ -44,6 +45,7 @@ function Quiz() {
           {question.option1}
         </li>
         <li
+          ref={Option2}
           onClick={(e) => {
             checkAns(e, 2);
           }}
@@ -51,6 +53,7 @@ function Quiz() {
           {question.option2}
         </li>
         <li
+          ref={Option3}
           onClick={(e) => {
             checkAns(e, 3);
           }}
@@ -58,6 +61,7 @@ function Quiz() {
           {question.option3}
         </li>
         <li
+          ref={Option4}
           onClick={(e) => {
             checkAns(e, 4);
           }}
