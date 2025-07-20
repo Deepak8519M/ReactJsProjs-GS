@@ -36,6 +36,11 @@ function Quiz() {
       setIndex(++index);
       setQuestion(data[index]);
       setLock(false);
+      optionArray.map((option) => {
+        option.current.classList.remove("wrong");
+        option.current.classList.remove("correct");
+        return null;
+      });
     }
   };
 
