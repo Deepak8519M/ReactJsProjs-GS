@@ -58,11 +58,11 @@
 }
 .addBtn {
   position: absolute;
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
   background: white;
   color: #553f98;
-  top: 20px;
+  top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,7 +76,7 @@
   height: fit-content;
   background: white;
   position: absolute;
-  top: 130px;
+  top: 90px;
   right: 20px;
   border-radius: 10px;
   padding: 20px;

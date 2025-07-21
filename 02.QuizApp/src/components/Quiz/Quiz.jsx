@@ -95,6 +95,10 @@ function Quiz() {
                 <input type="text" />
               </div>
             </div>
+            <div className="correctAns">
+              <label>Correct Option</label>
+              <input placeholder="fill option  between 1 and 4" type="number" />
+            </div>
             <button onClick={() => setQuizForm(false)}>Add</button>
           </form>
         </div>
