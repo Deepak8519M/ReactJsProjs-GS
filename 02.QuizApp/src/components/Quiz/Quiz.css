@@ -58,8 +58,8 @@
 }
 .addBtn {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   background: white;
   color: #553f98;
   top: 20px;
@@ -69,4 +69,70 @@
   font-size: 20px;
   border-radius: 50px;
   right: 20px;
+  cursor: pointer;
+}
+.quizForm {
+  width: 350px;
+  height: fit-content;
+  background: white;
+  position: absolute;
+  top: 130px;
+  right: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+}
+.quizForm input {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  outline: none;
+  border: 3px solid #553f98;
+}
+.quizForm form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.quizForm h2 {
+  width: fit-content;
+  padding-bottom: 4px;
+  font-size: 20px;
+  color: #553f98;
+  border-bottom: 3px solid black;
+}
+.quizForm .close {
+  font-size: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+label {
+  font-size: 15px;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.options input {
+  padding: 5px;
+  height: 40px;
+  font-size: 18px;
+  background: #553f98;
+  color: white;
+  border-radius: 2px;
+}
+.quizForm button {
+  background: white;
+  color: #553f9a;
+  font-size: 20px;
+  margin-top: 10px;
+  transition: all ease 0.3s;
+}
+.quizForm button:hover {
+  background: #553f98;
+  color: white;
+  transition: all ease 0.3s;
 }

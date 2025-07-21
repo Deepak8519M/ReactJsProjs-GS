@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "./Quiz.css";
 import { data } from "../../Assets/data";
 import { IoMdAdd } from "react-icons/io";
+import { IoIosClose } from "react-icons/io";
 
 function Quiz() {
   let [index, setIndex] = useState(0);
@@ -12,6 +13,8 @@ function Quiz() {
   let [score, setScore] = useState(0);
 
   let [result, setResult] = useState(false);
+
+  let [quizForm, setQuizForm] = useState(false);
 
   let Option1 = useRef(null);
   let Option2 = useRef(null);
@@ -62,9 +65,42 @@ function Quiz() {
 
   return (
     <div className="container ">
-      <div className="addBtn">
-        <IoMdAdd />
+      <div className="addBtn" onClick={() => setQuizForm(!quizForm)}>
+        <IoMdAdd style={{ fontSize: "39px" }} />
       </div>
+      {quizForm ? (
+        <div className="quizForm">
+          <IoIosClose onClick={() => setQuizForm(false)} className="close" />
+          <h2>Add Question Info</h2>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div className="addQuestion">
+              <label>Question ???</label>
+              <input className="question" type="text" />
+            </div>
+            <div className="options">
+              <div className="option1">
+                <label>Option 1</label>
+                <input type="text" />
+              </div>
+              <div className="option2">
+                <label>Option 2</label>
+                <input type="text" />
+              </div>
+              <div className="option3">
+                <label>Option 3</label>
+                <input type="text" />
+              </div>
+              <div className="option4">
+                <label>Option 4</label>
+                <input type="text" />
+              </div>
+            </div>
+            <button onClick={() => setQuizForm(false)}>Add</button>
+          </form>
+        </div>
+      ) : (
+        <></>
+      )}
       <h1>Quiz App</h1>
       <hr />
       {result ? (
