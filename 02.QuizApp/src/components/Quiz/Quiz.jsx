@@ -5,8 +5,10 @@ import { IoMdAdd } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
 
 function Quiz() {
+  let [que, setQue] = useState(data);
+
   let [index, setIndex] = useState(0);
-  let [question, setQuestion] = useState(data[index]);
+  let [question, setQuestion] = useState(que[index]);
 
   let [lock, setLock] = useState(false);
 
@@ -48,18 +50,19 @@ function Quiz() {
 
   const next = () => {
     if (lock === true) {
-      if (index === data.length - 1) {
+      if (index === que.length - 1) {
         setResult(true);
-        return 0; // return so that after cond true remaining statement not executed
+        return;
       }
 
-      setIndex(++index);
-      setQuestion(data[index]);
+      const newIndex = index + 1;
+      setIndex(newIndex);
+      setQuestion(que[newIndex]);
       setLock(false);
-      optionArray.map((option) => {
+
+      optionArray.forEach((option) => {
         option.current.classList.remove("wrong");
         option.current.classList.remove("correct");
-        return null;
       });
     }
   };
@@ -70,6 +73,34 @@ function Quiz() {
     setScore(0);
     setLock(false);
     setResult(false);
+  };
+
+  const handleAddQuestion = () => {
+    if (
+      !form.question ||
+      !form.option1 ||
+      !form.option2 ||
+      !form.option3 ||
+      !form.option4 ||
+      form.ans < 1 ||
+      form.ans > 4
+    ) {
+      alert("Please fill all fields and ensure the correct answer is between 1 and 4.");
+      return;
+    }
+    const newQuestion = {
+      question: form.question,
+      option1: form.option1,
+      option2: form.option2,
+      option3: form.option3,
+      option4: form.option4,
+      ans: Number(form.ans),
+    };
+
+    setQue([...que, newQuestion]);
+
+    setForm({ question: "", option1: "", option2: "", option3: "", option4: "", ans: 1 });
+    setQuizForm(false);
   };
 
   return (
@@ -139,7 +170,7 @@ function Quiz() {
               />
             </div>
 
-            <button onClick={() => setQuizForm(false)}>Add</button>
+            <button onClick={handleAddQuestion}>Add</button>
           </form>
         </div>
       ) : (
@@ -150,7 +181,7 @@ function Quiz() {
       {result ? (
         <>
           <h2>
-            You Scored {score} out of {data.length}
+            You Scored {score} out of {que.length}
           </h2>
           <button onClick={reset}>Reset</button>
         </>
@@ -195,7 +226,7 @@ function Quiz() {
           </ul>
           <button onClick={next}>Next</button>
           <div className="index">
-            {index + 1} of {data.length} questions
+            {index + 1} of {que.length} questions
           </div>
         </>
       )}
