@@ -23,6 +23,15 @@ function Quiz() {
 
   let optionArray = [Option1, Option2, Option3, Option4];
 
+  const [form, setForm] = useState({
+    question: "",
+    option1: "",
+    option2: "",
+    option3: "",
+    option4: "",
+    ans: 1, // default correct answer
+  });
+
   const checkAns = (e, ans) => {
     if (lock === false) {
       if (question.ans === ans) {
@@ -75,30 +84,61 @@ function Quiz() {
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="addQuestion">
               <label>Question ???</label>
-              <input className="question" type="text" />
+              <input
+                value={form.question}
+                onChange={(e) => setForm({ ...form, question: e.target.value })}
+                className="question"
+                type="text"
+              />
             </div>
+
             <div className="options">
               <div className="option1">
                 <label>Option 1</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  value={form.option1}
+                  onChange={(e) => setForm({ ...form, option1: e.target.value })}
+                />
               </div>
               <div className="option2">
                 <label>Option 2</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  value={form.option2}
+                  onChange={(e) => setForm({ ...form, option2: e.target.value })}
+                />
               </div>
               <div className="option3">
                 <label>Option 3</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  value={form.option3}
+                  onChange={(e) => setForm({ ...form, option3: e.target.value })}
+                />
               </div>
               <div className="option4">
                 <label>Option 4</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  value={form.option4}
+                  onChange={(e) => setForm({ ...form, option4: e.target.value })}
+                />
               </div>
             </div>
+
             <div className="correctAns">
               <label>Correct Option</label>
-              <input placeholder="fill option  between 1 and 4" type="number" />
+              <input
+                type="number"
+                min="1"
+                max="4"
+                value={form.ans}
+                onChange={(e) => setForm({ ...form, ans: Number(e.target.value) })}
+                placeholder="fill option between 1 and 4"
+              />
             </div>
+
             <button onClick={() => setQuizForm(false)}>Add</button>
           </form>
         </div>
