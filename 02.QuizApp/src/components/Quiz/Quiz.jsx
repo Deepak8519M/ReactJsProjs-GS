@@ -1,22 +1,32 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./Quiz.css";
 import { data } from "../../Assets/data";
 import { IoMdAdd } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
+import { MdOutlineRemove } from "react-icons/md";
 
 function Quiz() {
-  let [que, setQue] = useState(data);
+  // Load data from localStorage or fallback to imported data
+  // let [que, setQue] = useState(() => {
+  //   const storedQuestions = localStorage.getItem("quizQuestions");
+  //   return storedQuestions ? JSON.parse(storedQuestions) : data;
+  // });
+  let [que, setQue] = useState([]);
+  let [question, setQuestion] = useState({});
 
   let [index, setIndex] = useState(0);
-  let [question, setQuestion] = useState(que[index]);
+  // let [question, setQuestion] = useState(que[0]);
+
+  let [removeQue, setRemoveQue] = useState(false);
+
+  let [isAnime, setIsAnime] = useState(false);
 
   let [lock, setLock] = useState(false);
-
   let [score, setScore] = useState(0);
-
   let [result, setResult] = useState(false);
-
   let [quizForm, setQuizForm] = useState(false);
+
+  const [removeIndex, setRemoveIndex] = useState("");
 
   let Option1 = useRef(null);
   let Option2 = useRef(null);
@@ -31,30 +41,28 @@ function Quiz() {
     option2: "",
     option3: "",
     option4: "",
-    ans: 1, // default correct answer
+    ans: 1,
   });
 
   const checkAns = (e, ans) => {
-    if (lock === false) {
+    if (!lock) {
       if (question.ans === ans) {
         e.target.classList.add("correct");
-        setLock(true);
         setScore((prev) => prev + 1);
       } else {
         e.target.classList.add("wrong");
-        setLock(true);
         optionArray[question.ans - 1].current.classList.add("correct");
       }
+      setLock(true);
     }
   };
 
   const next = () => {
-    if (lock === true) {
+    if (lock) {
       if (index === que.length - 1) {
         setResult(true);
         return;
       }
-
       const newIndex = index + 1;
       setIndex(newIndex);
       setQuestion(que[newIndex]);
@@ -73,6 +81,11 @@ function Quiz() {
     setScore(0);
     setLock(false);
     setResult(false);
+    optionArray.forEach((option) => {
+      option.current.classList.remove("wrong");
+      option.current.classList.remove("correct");
+    });
+    localStorage.removeItem("quizQuestions");
   };
 
   const handleAddQuestion = () => {
@@ -88,6 +101,7 @@ function Quiz() {
       alert("Please fill all fields and ensure the correct answer is between 1 and 4.");
       return;
     }
+
     const newQuestion = {
       question: form.question,
       option1: form.option1,
@@ -97,18 +111,84 @@ function Quiz() {
       ans: Number(form.ans),
     };
 
-    setQue([...que, newQuestion]);
+    const updatedQuestions = [...que, newQuestion];
+    setQue(updatedQuestions);
+    localStorage.setItem("quizQuestions", JSON.stringify(updatedQuestions)); // Save to localStorage
 
     setForm({ question: "", option1: "", option2: "", option3: "", option4: "", ans: 1 });
     setQuizForm(false);
+    setIsAnime(true);
   };
 
+  const handleRemoveByIndex = () => {
+    const indexToRemove = parseInt(removeIndex) - 1;
+
+    if (isNaN(indexToRemove) || indexToRemove < 0 || indexToRemove >= que.length) {
+      alert("Invalid question number.");
+      return;
+    }
+
+    const updated = [...que];
+    updated.splice(indexToRemove, 1);
+
+    setQue(updated);
+    localStorage.setItem("quizQuestions", JSON.stringify(updated));
+    setRemoveIndex("");
+
+    // Reset quiz state to avoid bugs
+    setIndex(0);
+    setQuestion(updated[0] || {});
+    setScore(0);
+    setResult(false);
+    setLock(false);
+  };
+
+  useEffect(() => {
+    const stored = localStorage.getItem("quizQuestions");
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      if (parsed.length > 0) {
+        setQue(parsed);
+        setQuestion(parsed[0]);
+      } else {
+        // localStorage is empty array — fallback to original data
+        setQue(data);
+        setQuestion(data[0]);
+        localStorage.setItem("quizQuestions", JSON.stringify(data));
+      }
+    } else {
+      // localStorage has nothing — first time load
+      setQue(data);
+      setQuestion(data[0]);
+      localStorage.setItem("quizQuestions", JSON.stringify(data));
+    }
+  }, []);
+
   return (
-    <div className="container ">
+    <div className="container">
+      {removeQue && (
+        <div className="removeForm">
+          <h3>Remove a Question by Number</h3>
+
+          <input
+            type="number"
+            placeholder="Enter question number"
+            value={removeIndex}
+            onChange={(e) => setRemoveIndex(e.target.value)}
+          />
+
+          <button onClick={handleRemoveByIndex}>Remove</button>
+        </div>
+      )}
+      <div onClick={() => setRemoveQue(!removeQue)} className="minus">
+        <MdOutlineRemove />
+      </div>
+      {isAnime && <div className="popUP">Question Added Succesfully</div>}
       <div className="addBtn" onClick={() => setQuizForm(!quizForm)}>
         <IoMdAdd style={{ fontSize: "39px" }} />
       </div>
-      {quizForm ? (
+
+      {quizForm && (
         <div className="quizForm">
           <IoIosClose onClick={() => setQuizForm(false)} className="close" />
           <h2>Add Question Info</h2>
@@ -173,11 +253,11 @@ function Quiz() {
             <button onClick={handleAddQuestion}>Add</button>
           </form>
         </div>
-      ) : (
-        <></>
       )}
+
       <h1>Quiz App</h1>
       <hr />
+
       {result ? (
         <>
           <h2>
@@ -188,39 +268,19 @@ function Quiz() {
       ) : (
         <>
           <h2>
-            {index + 1}.{question.question}
+            {index + 1}. {question.question}
           </h2>
           <ul>
-            <li
-              ref={Option1}
-              onClick={(e) => {
-                checkAns(e, 1);
-              }}
-            >
+            <li ref={Option1} onClick={(e) => checkAns(e, 1)}>
               {question.option1}
             </li>
-            <li
-              ref={Option2}
-              onClick={(e) => {
-                checkAns(e, 2);
-              }}
-            >
+            <li ref={Option2} onClick={(e) => checkAns(e, 2)}>
               {question.option2}
             </li>
-            <li
-              ref={Option3}
-              onClick={(e) => {
-                checkAns(e, 3);
-              }}
-            >
+            <li ref={Option3} onClick={(e) => checkAns(e, 3)}>
               {question.option3}
             </li>
-            <li
-              ref={Option4}
-              onClick={(e) => {
-                checkAns(e, 4);
-              }}
-            >
+            <li ref={Option4} onClick={(e) => checkAns(e, 4)}>
               {question.option4}
             </li>
           </ul>
