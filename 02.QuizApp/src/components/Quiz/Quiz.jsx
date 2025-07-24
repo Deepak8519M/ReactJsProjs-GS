@@ -69,7 +69,7 @@ function Quiz() {
 
   const reset = () => {
     setIndex(0);
-    setQuestion(que[index]);
+    setQuestion(que[0]);
     setScore(0);
     setLock(false);
     setResult(false);
