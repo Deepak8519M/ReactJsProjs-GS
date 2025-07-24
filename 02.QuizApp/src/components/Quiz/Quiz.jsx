@@ -141,6 +141,7 @@ function Quiz() {
     setScore(0);
     setResult(false);
     setLock(false);
+    setRemoveQue(false);
   };
 
   useEffect(() => {
