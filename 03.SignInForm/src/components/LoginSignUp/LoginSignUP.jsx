@@ -31,10 +31,16 @@ function LoginSignUP() {
         Lost Password? <span>Click Here</span>
       </div>
       <div className="submit-container">
-        <div className={action === "Login" ? "submit gray" : "submit"}>
+        <div
+          onClick={() => setAction("Sign Up")}
+          className={action === "Login" ? "submit gray" : "submit"}
+        >
           Sign Up
         </div>
-        <div className={action === "Sign Up" ? "submit gray" : "submitG "}>
+        <div
+          onClick={() => setAction("Login")}
+          className={action === "Sign Up" ? "submit gray" : "submit"}
+        >
           Log In
         </div>
       </div>
