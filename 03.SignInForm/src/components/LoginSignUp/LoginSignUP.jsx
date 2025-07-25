@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginSignUP.css";
 
 import user_icon from "../Assets/person.png";
@@ -6,10 +6,11 @@ import email_icon from "../Assets/email.png";
 import password_icon from "../Assets/password.png";
 
 function LoginSignUP() {
+  const [action, setAction] = useState("Sign Up");
   return (
     <div className="container">
       <div className="header">
-        <div className="text">Sign Up</div>
+        <div className="text">{action}</div>
         <div className="underline"></div>
       </div>
       <div className="inputs">
@@ -30,8 +31,12 @@ function LoginSignUP() {
         Lost Password? <span>Click Here</span>
       </div>
       <div className="submit-container">
-        <div className="submit">Sign Up</div>
-        <div className="submit">Log In</div>
+        <div className={action === "Login" ? "submit gray" : "submit"}>
+          Sign Up
+        </div>
+        <div className={action === "Sign Up" ? "submit gray" : "submitG "}>
+          Log In
+        </div>
       </div>
     </div>
   );
