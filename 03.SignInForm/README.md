@@ -26,6 +26,7 @@ A clean and simple React-based Login and Sign-Up form UI that toggles between th
    ```bash
    git clone https://github.com/your-username/react-login-signup-form.git
    cd react-login-signup-form
+   ```
 
 
 2. **Install dependencies**
