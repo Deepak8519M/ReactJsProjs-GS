@@ -1,10 +1,3 @@
-Here’s a simple and clear `README.md` file for your project, tailored to the `LoginSignUP` component you shared. This README includes setup instructions, project description, folder structure, and usage.
-
----
-
-### ✅ `README.md`
-
-````markdown
 # 🔐 React Login & Sign Up Form
 
 A clean and simple React-based Login and Sign-Up form UI that toggles between the two views using `useState`. Styled with custom CSS and using basic image assets for visual icons.
