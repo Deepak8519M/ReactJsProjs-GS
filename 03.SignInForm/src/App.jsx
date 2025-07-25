@@ -1,9 +1,10 @@
 import React from "react";
+import LoginSignUP from "./components/LoginSignUp/LoginSignUP";
 
 function App() {
   return (
     <div>
-      <h1>Sign IN</h1>
+      <LoginSignUP />
     </div>
   );
 }
