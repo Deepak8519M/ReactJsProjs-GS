@@ -6,7 +6,7 @@ A clean and simple React-based Login and Sign-Up form UI that toggles between th
 
 ## 📸 Preview
 
-![Preview Image](./screenshot.png) <!-- You can capture your form and save it as screenshot.png -->
+![Preview Image](./SignInUpForm.png)
 
 ---
 
@@ -23,11 +23,11 @@ A clean and simple React-based Login and Sign-Up form UI that toggles between th
 ## 🛠️ Setup Instructions
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/react-login-signup-form.git
    cd react-login-signup-form
    ```
-
 
 2. **Install dependencies**
 
@@ -46,8 +46,6 @@ A clean and simple React-based Login and Sign-Up form UI that toggles between th
    ```
    http://localhost:5173/
    ```
-
-   
 
 ---
 
@@ -72,23 +70,20 @@ A clean and simple React-based Login and Sign-Up form UI that toggles between th
 
 ## 🧩 Technologies Used
 
-* React
-* Vite
-* CSS Modules
-* JSX
-* Icons (PNG format)
+- React
+- Vite
+- CSS Modules
+- JSX
+- Icons (PNG format)
 
 ---
 
 ## 🙌 Credits
 
-* Form design inspired by modern minimal UI layouts.
-
+- Form design inspired by modern minimal UI layouts.
 
 ---
 
 ## 📄 License
 
 This project is licensed under the MIT License — feel free to use and modify.
-
-
